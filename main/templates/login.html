@@ -1,0 +1,37 @@
+{%extends 'base.html'%}
+{%block content%}
+
+<div class="w3-padding-large" id="main">
+  {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                  {% for message in messages %}
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                        <span>{{ message }}</span>
+                        <button type="button" class="close" onclick=delete_flash(this) data-dismiss="alert" aria-label="X">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+  <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+    <h1 class="w3-jumbo"><span class="w3-hide-small">Prisijungimas</h1>
+  <form action="", method="post">
+      {{ form.hidden_tag() }}
+      <p>{{form.tabelioNr.label}}<br>
+      {{form.tabelioNr(size=32)}}<br>
+      </p>
+      <p>{{form.slaptazodis.label}}<br>
+      {{form.slaptazodis(size=32)}}<br>
+      </p>
+      <p>{{ form.submit() }}</p>
+      <p>
+        <div class="form-check">
+                     {{ form.prisiminti(class="form-check-input") }}
+                     {{ form.prisiminti.label(class="form-check-label") }}
+        </div>
+      </p>
+  </form>
+  </header>
+
+{%endblock content%}
